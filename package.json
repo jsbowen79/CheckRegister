@@ -1,0 +1,39 @@
+{
+  "name": "checkregister",
+  "version": "1.0.0",
+  "description": "This program will provide users with the ability to track balances in bank accounts",
+  "homepage": "https://github.com/jsbowen79/CheckRegister#readme",
+  "bugs": {
+    "url": "https://github.com/jsbowen79/CheckRegister/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsbowen79/CheckRegister.git"
+  },
+  "license": "ISC",
+  "author": "Joseph Bowen",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "watch": "tsc -watch",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon dist/index.js",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . --fix",
+    "format": "npx prettier --write ."
+  },
+  "dependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.6.0",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.3"
+  }
+}
