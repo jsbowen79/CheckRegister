@@ -4,7 +4,7 @@ import prettierConfig from 'eslint-config-prettier';
 
 export default [
   {
-    ignores: ['node_modules', 'package-lock.json']
+    ignores: ['node_modules', 'package-lock.json', "dist/**"],
   },
 
   js.configs.recommended,
@@ -18,17 +18,17 @@ export default [
         console: 'readonly',
         module: 'readonly',
         require: 'readonly',
-        process: 'readonly'
-      }
+        process: 'readonly',
+      },
     },
     plugins: {
-      prettier: prettierPlugin
+      prettier: prettierPlugin,
     },
     rules: {
       ...prettierConfig.rules,
       'no-unused-vars': 'warn',
       'no-console': 'off',
-      'prettier/prettier': 'error'
-    }
-  }
+      'prettier/prettier': 'error',
+    },
+  },
 ];

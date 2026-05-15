@@ -1,5 +1,4 @@
-import { rootNode } from "./index.js";
-import { CategoryNode } from "./Category.js";
+import { CategoryNode } from './Category.js';
 export var TransType;
 (function (TransType) {
     TransType["Credit"] = "Credit";
@@ -39,7 +38,7 @@ export class Transaction {
                 case TransMedia.Cash:
                 case TransMedia.Transfer:
                     this.status = Status.Complete;
-                    message = 'Transaction Complete.';
+                    message = 'Transaction Complete';
                     break;
                 case TransMedia.Credit:
                     this.status = Status.Declined;
@@ -53,6 +52,9 @@ export class Transaction {
                         'Transaction Pending.  Please allow 24 hours for review. Cash Deposits are credited upon review.' +
                             '  Checks are subject to a 10 day hold.';
                     break;
+                default:
+                    this.status = Status.Declined;
+                    message = 'Invalid Transaction Media';
             }
         }
         else {
@@ -65,24 +67,24 @@ export class Transaction {
 export function formatTransactions(item) {
     let formattedString;
     formattedString =
-        "Date".toString().padEnd(60) +
-            "Transaction Type".toString().padEnd(18) +
-            "Transaction Media".padEnd(20) +
-            "Amount".toString().padEnd(20) +
-            "Balance".toString().padEnd(20) +
-            "Category".padEnd(20) +
-            "Memo".padEnd(50) +
-            "\n";
+        'Date'.toString().padEnd(60) +
+            'Transaction Type'.toString().padEnd(18) +
+            'Transaction Media'.padEnd(20) +
+            'Amount'.toString().padEnd(20) +
+            'Balance'.toString().padEnd(20) +
+            'Category'.padEnd(20) +
+            'Memo'.padEnd(50) +
+            '\n';
     if (Array.isArray(item)) {
-        item.forEach(transaction => {
+        item.forEach((transaction) => {
             formattedString +=
                 transaction.date.toString().padEnd(60) +
                     transaction.transType.toString().padEnd(18) +
                     transaction.transMedia.padEnd(20) +
                     transaction.amount.toString().padEnd(20) +
-                    transaction.endingBalance?.toString().padEnd(20) +
-                    transaction.category.toString().padEnd(20) +
-                    transaction.transMemo?.padEnd(50) +
+                    (transaction.endingBalance?.toString() ?? '').padEnd(20) +
+                    (transaction.category?.toString() ?? '').padEnd(20) +
+                    (transaction.transMemo ?? '').padEnd(50) +
                     '\n';
         });
     }
@@ -92,9 +94,9 @@ export function formatTransactions(item) {
                 item.transType.toString().padEnd(18) +
                 item.transMedia.padEnd(20) +
                 item.amount.toString().padEnd(20) +
-                item.endingBalance?.toString().padEnd(20) +
-                item.category.toString().padEnd(20) +
-                item.transMemo?.padEnd(50) +
+                (item.endingBalance?.toString() ?? '').padEnd(20) +
+                (item.category?.toString() ?? '').padEnd(20) +
+                (item.transMemo ?? '').padEnd(50) +
                 '\n';
     }
     return formattedString;

@@ -1,6 +1,3 @@
-import { rootNode } from "./index.js";
-import { Transaction } from "./Transaction.js";
-import { Account } from "./Account.js";
 export var CategoryNames;
 (function (CategoryNames) {
     CategoryNames["Housing"] = "Housing";
@@ -107,6 +104,8 @@ export function buildCategoryNodes() {
     return Root;
 }
 export function findCategoryNode(currentNode, target) {
+    if (!currentNode)
+        return undefined;
     if (currentNode && currentNode.catName === target) {
         return currentNode;
     }
@@ -128,26 +127,6 @@ export function listCategories(node, categoriesList) {
             listCategories(child, categoriesList);
         }
         return categoriesList;
-    }
-}
-export function listTransactionsInCategory(transactions, node, list, target) {
-    if (node.children.length === 0)
-        return list;
-    else {
-        for (const child of node.children) {
-            transactions.forEach(transaction => {
-                if (transaction.category === target) {
-                    list.push(transaction);
-                }
-                const result = listTransactionsInCategory(transactions, child, list, target);
-                if (result != null) {
-                    result.forEach(transaction => {
-                        list.push(transaction);
-                    });
-                }
-            });
-        }
-        return null;
     }
 }
 //# sourceMappingURL=Category.js.map

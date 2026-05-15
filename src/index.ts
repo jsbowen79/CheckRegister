@@ -1,33 +1,79 @@
-import { TransMedia, TransType, Transaction, Status, formatTransactions } from "./Transaction.js";
-import { Type, AccountStatus, Account } from "./Account.js";
-import { CategoryNames, buildCategoryNodes, findCategoryNode, listCategories, listTransactionsInCategory, CategoryNode } from "./Category.js";
+/***********************************************************************************************************
+ * This program is the beginning of a check register designed for home users.  This portion is written in 
+ * TypeScript and serves as the data management modules for the final program.  There is currently no UI
+ * The UI will be written in Sprint 3. Author: Joseph Bowen
+ ***********************************************************************************************************/
 
-const rootNode = buildCategoryNodes(); 
+//Import needed modules and Classes
+
+import {
+  TransMedia,
+  formatTransactions,
+} from './Transaction.js';
+import { Type, Account } from './Account.js';
+import {
+  CategoryNames,
+  buildCategoryNodes,
+  findCategoryNode,
+  listCategories,
+} from './Category.js';
 
 
-const testSavings = new Account("Test Savings", Type.Savings, "Joseph Bowen", 123456987)
+/*************************************************************************************************************************
+ * Create variables needed to demonstrate the program. The rootNode tracks the transaction categories.  The usedId
+ * will track id's used to ensure that account Id's aren't duplicated.  The testSavings is an object of Type Account
+ * from the Account class.  This object is how all transactions are stored and processed within each individual account 
+ ************************************************************************************************************************/
+const rootNode = buildCategoryNodes();
+const usedId: number[] = []; 
+const testSavings = new Account(
+  rootNode,
+  usedId,
+  'Test Savings',
+  Type.Savings,
+  'Joseph Bowen',
+  123456987
+);
 
+//This is a function that demonstrates the function of the program.  Eventually, this will be completed using a web-based UI
+function run() {
+  testSavings.deposit(
+    1000.56,
+    TransMedia.Cash,
+    findCategoryNode(rootNode, CategoryNames.OtherIncome),
+    'Tax Refund'
+  );
 
-const deposit = testSavings.deposit(1000.56, TransMedia.Cash, findCategoryNode(rootNode, CategoryNames.OtherIncome), "Tax Refund"); 
-const withd = testSavings.withdraw(.56, TransMedia.Transfer, findCategoryNode(rootNode, CategoryNames.Uncategorized), "To Money Market"); 
-const deposit2 = testSavings.deposit(
-  1000.56,
+  testSavings.withdraw(
+  0.56,
   TransMedia.ATM,
-  findCategoryNode(rootNode, CategoryNames.OtherIncome),
-  'Tax Refund'
-);
-
-const withd2 = testSavings.withdraw(
-  2000.56,
-  TransMedia.Transfer,
-  findCategoryNode(rootNode, CategoryNames.InvestmentIncome),
+  findCategoryNode(rootNode, CategoryNames.Uncategorized),
   'To Money Market'
+  );
+
+  
+  testSavings.deposit(
+    1000.56,
+    TransMedia.ATM,
+    findCategoryNode(rootNode, CategoryNames.OtherIncome),
+    'Tax Refund'
+  );
+  testSavings.withdraw(
+    2000.56,
+    TransMedia.Transfer,
+    findCategoryNode(rootNode, CategoryNames.InvestmentIncome),
+    'To Money Market'
+  );
+  
+  const history2 = testSavings.getTransactionHistory(10);
+  console.log("History2: ", history2)
+  console.log(formatTransactions(history2));
+  let list: string[] = [];
+  console.log(listCategories(rootNode, list)
 );
+}
+
+run(); 
 
 
-const history2 = testSavings.getTransactionHistory(10); 
 
-console.log(formatTransactions(history2)); 
-let list: string[] = [];
-console.log(listCategories(rootNode, list)); 
-export { rootNode };

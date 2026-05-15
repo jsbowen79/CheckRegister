@@ -14,6 +14,8 @@ export declare enum AccountStatus {
     Frozen = "Frozen"
 }
 export declare class Account {
+    root: CategoryNode;
+    usedId: number[];
     name: string;
     type: Type;
     owner: string;
@@ -25,13 +27,15 @@ export declare class Account {
     private createdAt;
     private transactions;
     private id;
-    private usedId;
-    constructor(name: string, type: Type, owner: string, accountNumber: number);
-    deposit(amount: number, transMedia: TransMedia, category?: CategoryNode | undefined, transMemo?: string): {
+    constructor(root: CategoryNode, usedId: number[], name: string, type: Type, owner: string, accountNumber: number);
+    validateAmount(amount: number): boolean;
+    validateCategory(category: CategoryNode | any): boolean;
+    validateTransaction(transaction: Transaction): boolean;
+    deposit(amount: number, transMedia: TransMedia, category?: CategoryNode, transMemo?: string): {
         success: Boolean;
         message: string;
     };
-    withdraw(amount: number, transMedia: TransMedia, category?: CategoryNode | undefined, transMemo?: string): {};
+    withdraw(amount: number, transMedia: TransMedia, category?: CategoryNode, transMemo?: string): {};
     getBalance(): {
         balance: number;
         pendingBalance: number;

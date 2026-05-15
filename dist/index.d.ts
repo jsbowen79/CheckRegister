@@ -1,4 +1,2 @@
-import { CategoryNode } from "./Category.js";
-declare const rootNode: CategoryNode;
-export { rootNode };
+export {};
 //# sourceMappingURL=index.d.ts.map

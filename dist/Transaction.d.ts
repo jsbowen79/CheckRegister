@@ -1,4 +1,4 @@
-import { CategoryNode } from "./Category.js";
+import { CategoryNode } from './Category.js';
 export declare enum TransType {
     Credit = "Credit",
     Debit = "Debit"

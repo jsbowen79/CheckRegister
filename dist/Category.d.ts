@@ -1,4 +1,3 @@
-import { Transaction } from "./Transaction.js";
 export declare enum CategoryNames {
     Housing = "Housing",
     Utilities = "Utilities",
@@ -52,5 +51,4 @@ export declare class CategoryNode {
 export declare function buildCategoryNodes(): CategoryNode;
 export declare function findCategoryNode(currentNode: CategoryNode, target: CategoryNames): CategoryNode | undefined;
 export declare function listCategories(node: CategoryNode, categoriesList: string[]): string[];
-export declare function listTransactionsInCategory(transactions: Transaction[], node: CategoryNode, list: Transaction[], target?: CategoryNode): Transaction[] | null;
 //# sourceMappingURL=Category.d.ts.map
