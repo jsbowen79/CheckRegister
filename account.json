@@ -1,0 +1,247 @@
+{
+  "root": {
+    "children": [
+      {
+        "children": [],
+        "catName": "Uncategorized"
+      },
+      {
+        "children": [],
+        "catName": "Medical"
+      },
+      {
+        "children": [
+          {
+            "children": [],
+            "catName": "Other Housing"
+          },
+          {
+            "children": [],
+            "catName": "Rent"
+          },
+          {
+            "children": [],
+            "catName": "Mortgage"
+          },
+          {
+            "children": [],
+            "catName": "House Repair"
+          }
+        ],
+        "catName": "Housing"
+      },
+      {
+        "children": [
+          {
+            "children": [],
+            "catName": "Other Utilities"
+          },
+          {
+            "children": [],
+            "catName": "Electricity"
+          },
+          {
+            "children": [],
+            "catName": "Sewer"
+          },
+          {
+            "children": [],
+            "catName": "Gas"
+          },
+          {
+            "children": [],
+            "catName": "Water"
+          }
+        ],
+        "catName": "Utilities"
+      },
+      {
+        "children": [
+          {
+            "children": [],
+            "catName": "Other Food"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "catName": "Snacks"
+              },
+              {
+                "children": [],
+                "catName": "Candy"
+              },
+              {
+                "children": [],
+                "catName": "Desert"
+              },
+              {
+                "children": [],
+                "catName": "Staples"
+              }
+            ],
+            "catName": "Groceries"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "catName": "Fast Food"
+              },
+              {
+                "children": [],
+                "catName": "Restaurant"
+              }
+            ],
+            "catName": "Dining"
+          }
+        ],
+        "catName": "Food"
+      },
+      {
+        "children": [
+          {
+            "children": [],
+            "catName": "OtherInsurance"
+          },
+          {
+            "children": [],
+            "catName": "Medical Insurance"
+          },
+          {
+            "children": [],
+            "catName": "House Insurance"
+          },
+          {
+            "children": [],
+            "catName": "Vehicle Insurance"
+          },
+          {
+            "children": [],
+            "catName": "Life Insurance"
+          }
+        ],
+        "catName": "Insurance"
+      },
+      {
+        "children": [
+          {
+            "children": [],
+            "catName": "Other Income"
+          },
+          {
+            "children": [],
+            "catName": "Employment"
+          },
+          {
+            "children": [],
+            "catName": "Investment Income"
+          },
+          {
+            "children": [],
+            "catName": "Benefits"
+          }
+        ],
+        "catName": "Income"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [],
+                "catName": "Fuel"
+              },
+              {
+                "children": [],
+                "catName": "Vehicle Repair"
+              }
+            ],
+            "catName": "Vehicle"
+          },
+          {
+            "children": [],
+            "catName": "Other Transportation"
+          }
+        ],
+        "catName": "Transportation"
+      }
+    ],
+    "catName": "Root"
+  },
+  "usedId": [
+    1
+  ],
+  "name": "Test Savings",
+  "type": "Savings",
+  "owner": "Joseph Bowen",
+  "accountNumber": 123456987,
+  "_balance": 1000,
+  "_pendingBalance": 2000.56,
+  "currencyType": "USD",
+  "accountStatus": "Open",
+  "createdAt": "2026-05-16T17:16:09.045Z",
+  "id": 1,
+  "transactions": [
+    {
+      "amount": 1000.56,
+      "transMedia": "Cash",
+      "transMemo": "Tax Refund",
+      "category": {
+        "children": [],
+        "catName": "Other Income"
+      },
+      "id": 1,
+      "transType": "Credit",
+      "accountId": 1,
+      "date": "2026-05-16T17:16:09.045Z",
+      "status": "Complete",
+      "endingBalance": 1000.56
+    },
+    {
+      "amount": 0.56,
+      "transMedia": "ATM",
+      "transMemo": "To Money Market",
+      "category": {
+        "children": [],
+        "catName": "Uncategorized"
+      },
+      "id": 2,
+      "transType": "Debit",
+      "accountId": 1,
+      "date": "2026-05-16T17:16:09.049Z",
+      "status": "Complete",
+      "endingBalance": 1000
+    },
+    {
+      "amount": 1000.56,
+      "transMedia": "ATM",
+      "transMemo": "Tax Refund",
+      "category": {
+        "children": [],
+        "catName": "Other Income"
+      },
+      "id": 3,
+      "transType": "Credit",
+      "accountId": 1,
+      "date": "2026-05-16T17:16:09.049Z",
+      "status": "Pending",
+      "endingBalance": 1000
+    },
+    {
+      "amount": 2000.56,
+      "transMedia": "Transfer",
+      "transMemo": "To Money Market",
+      "category": {
+        "children": [],
+        "catName": "Investment Income"
+      },
+      "id": 4,
+      "transType": "Debit",
+      "accountId": 1,
+      "date": "2026-05-16T17:16:09.050Z",
+      "status": "Declined",
+      "endingBalance": 1000
+    }
+  ]
+}

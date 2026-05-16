@@ -1,3 +1,5 @@
+//This file uses Vitest to test the Category Class.  It ensures that the category tree is
+//properly assembled.
 import { describe, test, expect, beforeEach } from 'vitest';
 import { buildCategoryNodes, CategoryNames, CategoryNode, findCategoryNode, } from '../Category.js';
 describe('Category Tree', () => {
@@ -10,11 +12,11 @@ describe('Category Tree', () => {
     });
     test('Root contains Electricity', () => {
         const electricity = findCategoryNode(root, CategoryNames.Electricity);
-        expect(electricity).toBeDefined;
+        expect(electricity).toBeDefined();
     });
     test('Root contains Restaurant', () => {
         const restaurant = findCategoryNode(root, CategoryNames.Restaurant);
-        expect(restaurant).toBeDefined;
+        expect(restaurant).toBeDefined();
     });
 });
 //# sourceMappingURL=category.test.js.map

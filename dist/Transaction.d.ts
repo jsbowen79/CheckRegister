@@ -1,3 +1,8 @@
+/*******************************************************************************************************
+ * This Class provides the framework for a transaction.  Each transaction that is performed is assembled
+ * into a standard format.  This format can then be stored in an account to keep a permanent record of
+ * the transaction.
+ ******************************************************************************************************/
 import { CategoryNode } from './Category.js';
 export declare enum TransType {
     Credit = "Credit",
@@ -24,9 +29,9 @@ export declare class Transaction {
     transType?: TransType | undefined;
     accountId?: number | undefined;
     date?: Date | undefined;
-    endingBalance?: number | undefined;
     status?: Status | undefined;
-    constructor(amount: number, transMedia: TransMedia, transMemo?: string | undefined, category?: CategoryNode | undefined, id?: number | undefined, transType?: TransType | undefined, accountId?: number | undefined, date?: Date | undefined, endingBalance?: number | undefined, status?: Status | undefined);
+    endingBalance: number;
+    constructor(amount: number, transMedia: TransMedia, transMemo?: string | undefined, category?: CategoryNode | undefined, id?: number | undefined, transType?: TransType | undefined, accountId?: number | undefined, date?: Date | undefined, status?: Status | undefined);
     determineStatus(): string;
 }
 export declare function formatTransactions(item: Transaction | Transaction[]): string;

@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  * This Class provides the framework for a transaction.  Each transaction that is performed is assembled
- * into a standard format.  This format can then be stored in an account to keep a permanent record of 
- * the transaction. 
+ * into a standard format.  This format can then be stored in an account to keep a permanent record of
+ * the transaction.
  ******************************************************************************************************/
 
 import { CategoryNode } from './Category.js';
 
-//Enums are used to limit the available inputs for each variable. 
+//Enums are used to limit the available inputs for each variable.
 
 export enum TransType {
   Credit = 'Credit',
@@ -28,9 +28,11 @@ export enum TransMedia {
 }
 
 //This class creates a Transaction object to be saved in the account and provides
-//methods necessary to manage the transactions. 
+//methods necessary to manage the transactions.
 
 export class Transaction {
+  public endingBalance: number = 0;
+
   constructor(
     public amount: number,
     public transMedia: TransMedia,
@@ -40,15 +42,14 @@ export class Transaction {
     public transType?: TransType,
     public accountId?: number,
     public date?: Date,
-    public endingBalance?: number,
     public status?: Status
-  ) { }
-  
-  //This method determines the status of a transaction based on the rules.  Available status's are 
-  //complete, pending, or declined.  
-  
+  ) {}
+
+  //This method determines the status of a transaction based on the rules.  Available status's are
+  //complete, pending, or declined.
+
   determineStatus(): string {
-    let message: string = '';
+    let message: string;
     if (this.transType == TransType.Credit) {
       switch (this.transMedia) {
         case TransMedia.Cash:
@@ -80,8 +81,8 @@ export class Transaction {
   }
 }
 
-//This function loops through the transaction list in the account and creates a human readable table showing the transactions.  
-//It is currently set up for the console, but will eventually prepare data to be placed in the UI.  
+//This function loops through the transaction list in the account and creates a human readable table showing the transactions.
+//It is currently set up for the console, but will eventually prepare data to be placed in the UI.
 
 export function formatTransactions(item: Transaction | Transaction[]): string {
   let formattedString: string;
@@ -102,7 +103,7 @@ export function formatTransactions(item: Transaction | Transaction[]): string {
         transaction.transMedia.padEnd(20) +
         transaction.amount.toString().padEnd(20) +
         (transaction.endingBalance?.toString() ?? '').padEnd(20) +
-        (transaction.category?.toString() ?? '').padEnd(20) +
+        (transaction.category?.catName.toString() ?? '').padEnd(20) +
         (transaction.transMemo ?? '').padEnd(50) +
         '\n';
     });
@@ -113,7 +114,7 @@ export function formatTransactions(item: Transaction | Transaction[]): string {
       item.transMedia.padEnd(20) +
       item.amount.toString().padEnd(20) +
       (item.endingBalance?.toString() ?? '').padEnd(20) +
-      (item.category?.toString() ?? '').padEnd(20) +
+      (item.category?.catName.toString() ?? '').padEnd(20) +
       (item.transMemo ?? '').padEnd(50) +
       '\n';
   }

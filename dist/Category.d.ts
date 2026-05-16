@@ -1,3 +1,10 @@
+/*********************************************************************************************************
+ * This class is responsible for defining the category classifications that will be available in the
+ * program.  The category names and defined by enum to ensure that they are consistent.  The categories
+ * are assembled into a category node tree that allows categories to have relationships with other
+ * categories.  Later, functionality will be added to allow users to sort transactions by category.
+ * This will be done utilizing recursion as the tree structure is perfect for recursion use.
+ *********************************************************************************************************/
 export declare enum CategoryNames {
     Housing = "Housing",
     Utilities = "Utilities",

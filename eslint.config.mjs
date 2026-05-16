@@ -1,34 +1,20 @@
 import js from '@eslint/js';
-import prettierPlugin from 'eslint-plugin-prettier';
-import prettierConfig from 'eslint-config-prettier';
+import tseslint from 'typescript-eslint';
 
 export default [
   {
-    ignores: ['node_modules', 'package-lock.json', "dist/**"],
+    ignores: ['node_modules', 'dist/**', 'eslint.config.mjs'],
   },
 
   js.configs.recommended,
 
+  ...tseslint.configs.recommended,
+
   {
-    files: ['**/*.js'],
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      globals: {
-        console: 'readonly',
-        module: 'readonly',
-        require: 'readonly',
-        process: 'readonly',
-      },
-    },
-    plugins: {
-      prettier: prettierPlugin,
-    },
+    files: ['**/*.ts'],
     rules: {
-      ...prettierConfig.rules,
-      'no-unused-vars': 'warn',
-      'no-console': 'off',
-      'prettier/prettier': 'error',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
 ];

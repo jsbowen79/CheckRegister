@@ -1,12 +1,12 @@
 /*********************************************************************************************************
- * This class is responsible for defining the category classifications that will be available in the 
- * program.  The category names and defined by enum to ensure that they are consistent.  The categories 
- * are assembled into a category node tree that allows categories to have relationships with other 
- * categories.  Later, functionality will be added to allow users to sort transactions by category.  
- * This will be done utilizing recursion as the tree structure is perfect for recursion use. 
+ * This class is responsible for defining the category classifications that will be available in the
+ * program.  The category names and defined by enum to ensure that they are consistent.  The categories
+ * are assembled into a category node tree that allows categories to have relationships with other
+ * categories.  Later, functionality will be added to allow users to sort transactions by category.
+ * This will be done utilizing recursion as the tree structure is perfect for recursion use.
  *********************************************************************************************************/
 
-//Define available category names. 
+//Define available category names.
 
 export enum CategoryNames {
   Housing = 'Housing',
@@ -54,8 +54,8 @@ export enum CategoryNames {
   Medical = 'Medical',
 }
 
-//Create a category node class that saves categories as objects with a name and an array of children. 
-//This is the basic building block of the Category Tree. 
+//Create a category node class that saves categories as objects with a name and an array of children.
+//This is the basic building block of the Category Tree.
 
 export class CategoryNode {
   public catName: CategoryNames;
@@ -66,8 +66,8 @@ export class CategoryNode {
   }
 }
 
-//This function builds the Category tree by defining each category node and its children.  The 
-//tree will be imported into each account so that it can be used.  
+//This function builds the Category tree by defining each category node and its children.  The
+//tree will be imported into each account so that it can be used.
 
 export function buildCategoryNodes(): CategoryNode {
   const Root = new CategoryNode(CategoryNames.Root);
@@ -148,8 +148,8 @@ export function buildCategoryNodes(): CategoryNode {
   return Root;
 }
 
-//This function uses recursion to find the category node that needs to be connected to a transaction.  
-//This ensures that the transaction will be properly attached to the category node.  
+//This function uses recursion to find the category node that needs to be connected to a transaction.
+//This ensures that the transaction will be properly attached to the category node.
 
 export function findCategoryNode(
   currentNode: CategoryNode,
@@ -167,7 +167,7 @@ export function findCategoryNode(
   }
 }
 
-//This function uses recursion to display a list of available category nodes.  
+//This function uses recursion to display a list of available category nodes.
 
 export function listCategories(
   node: CategoryNode,
